@@ -1,0 +1,57 @@
+{% extends 'index.html'%}
+{% block content %}
+<style>
+  footer{
+    background-color: #b7804a;
+  }
+  .mx{
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+
+</style>
+
+
+<footer class="">
+    
+    <div class="d-flex justify-content-between mx pt-4 pb-4">
+
+      <div class="d-flex flex-column gap-2" >
+        <h4>Links</h4>
+        <span><a  class="text-decoration-none text-dark" href="{% url 'home'%}">Home</a></span>
+        <span><a class="text-decoration-none text-dark" href="{% url 'mattress'%}" >Mattress</a></span>
+        <span>Bed</span>
+        <span>Bedding</span>
+        <span>Baby Rang</span>
+        <span>Dog Bed</span>
+        <span>Pillow</span>
+        <span><a class="text-decoration-none text-dark" href="{% url 'blanket'%}" >Blanket</a></span>
+        <span>Contact</span>
+        <span>About Us </span>
+      </div>
+   
+       <div class="d-flex flex-column gap-2">
+        <h4>Follow Us</h4>
+        <span><i class="bi bi-instagram"></i>  Instagram</span>
+        <span><i class="bi bi-facebook"></i>  Facebook</span>
+        <a class="text-decoration-none text-dark" href="https://www.youtube.com/"><span><i class="bi bi-youtube"></i>  YouTube</span></a>
+        <span><i class="bi bi-twitter"></i>  Twitter</span>
+       </div>
+ 
+
+    <div class="d-flex flex-column gap-2">
+        <h4>Contact Us</h4>
+        <span><i class="bi bi-telephone-fill"></i> +91-9828378855</span>
+        <span><i class="bi bi-whatsapp"></i> 9828378855</span>
+        <span><i class="bi bi-envelope-fill"></i> info@sleepcomfort.in</span>
+        <span><i class="bi bi-globe"></i> www.sleepcomfort.com</span>
+    </div>
+        
+        
+        
+        
+    
+    </div>
+</footer>
+
+{%endblock%}    

@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+    <style>
+        body{
+        background-image: url("{% static 'img/img8.jpg'%}");
+        color: whitesmoke;
+        background-position: top;
+        background-size: cover;
+        }
+    </style>
+    <div class="d-flex justify-content-center align-items-center flex-column vh-100">
+        <h1>Access Denined!!!!</h1>
+        <h2>You don't have permission to Login  this content!!.</h2>
+        <h3>Please content to admin to have permission!!.</h3>
+        <button class="btn  logout btn-warning">
+            <a class="text-decoration-none text-dark " href="{% url 'logout'%}"><b>Try Again</b></a>
+          </button>
+    </div>
+
+{% endblock %}

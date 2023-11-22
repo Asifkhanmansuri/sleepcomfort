@@ -1,0 +1,58 @@
+{% extends 'index.html'%}
+{% block content%}
+{% load static%}
+<style>
+    .sleepColor {
+        color: #B7804A;
+      }
+</style>
+<!-- including the header from header templet -->
+{% include 'header.html'%}
+<h2 class="d-flex justify-content-center mt-4">Your Selected Product</h2>
+<!-- now we are creating the section for choosen product details -->
+<!-- main container div -->
+<div class="d-flex mx-4 border">
+    <div class="border ">
+        <img src="{{pro_card.Image.url}}" alt="" width="500px" height="400px">
+    </div>
+    <div class="mx-4 d-flex justify-content-between flex-column">
+        <div class="mx-4">
+            <h3 class="text-success fs-2">{{pro_card.Productname}}</h3>
+            <span class="sleepColor fs-4"><i class="bi bi-currency-rupee"></i>{{pro_card.Productprice}}</span><br>
+            
+            <div class="d-flex gap-4">
+                <h3>Size:-</h3>
+                {% for sizes in size %}
+                <a href="?size={{size.size}}">
+                    <button class="btn btn-light">
+                        {{sizes.size}}
+                        </button>
+                </a>
+                {% endfor %}
+               
+            </div>
+    
+            <!-- making section for weight -->
+           <div >
+            
+            <form action="">
+                <label for="quantity"><h3>Qty :</h3></label>
+                <input type="number" id="quantity" name="quantity" min="1" max="100" placeholder="Enter Qty">
+            </form>
+           </div>
+        </div>
+           <div>
+            <button class="btn btn-light border-dark"><b><a class="text-decoration-none text-dark" href="?op=addToCart&productCategory=pillow&id={{pro_card.id}}">ADD TO CART</a></b></button>
+            <button class="btn btn-warning border-dark"><b><a class="text-decoration-none text-dark" href="{% url 'buynow' pro_card.id %}">Buy Now</a></b></button>
+        </div>
+        
+    </div>
+    
+
+</div>
+
+<!-- including the help section  -->
+{% include 'help.html'%}
+<!-- including the footer from template -->
+{% include 'footer.html'%}
+{% endblock%}

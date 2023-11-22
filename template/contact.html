@@ -1,0 +1,58 @@
+{% extends 'index.html'%}
+{% block content%}
+{% load static %}
+
+<style>
+    .form{
+        background-color: #fdf9ca;
+    }
+</style>
+
+{% include 'header.html' %}
+<div>
+    <h2 class="d-flex justify-content-center mt-4">We're here for you</h2>
+    <span class="d-flex justify-content-center mt-3">Our Sleep Experts are happy to answer any of your queries. </span>
+       <span class="d-flex justify-content-center"> Call, Whatsapp or email us and we'll get back to you in no time!</span>
+       <span class="d-flex justify-content-center mt-4">We're available, Mon to Fri: 10am - 7pm | Sat: 10am - 5pm</span>
+       <div class=" d-flex justify-content-center mt-3">
+        <div style="padding-right: 100px;" >
+            <span class="d-flex justify-content-center">Email </span> 
+            <span>info@sleepcomfort.in</span>
+        </div>
+        <div class="fs-1">|</div>
+        <div style="padding-left: 100px;">
+            <span class="d-flex justify-content-center">Call or Whatsapp</span>
+            <span>9828378855</span>
+        </div>
+       </div>
+    </div>
+
+    <!-- ==================== -->
+    <!-- now we are making the section of to full fill the form of  client detail  -->
+    <div class="form d-flex justify-content-center ">
+        <div class="mt-4">
+            <h2>SEND US A MESSAGE</h2>
+        <form action="" class="bg-light p-3 mb-4 shadow " >
+            <label for="">Name</label><br>
+            <input type="text"><br>
+
+            <label for="">Email</label><br>
+            <input type="Text"><br>
+
+            <label for="">Contact</label><br>
+            <input type="text"><br>
+
+
+            <label for="">Message</label><br>
+            <input type="message" name="" id=""><br>
+
+            <button class="d-flex justify-content-center mt-4 rounded btn btn-warning " style="margin-left: 100px;">Submit</button>
+
+            
+        </form>
+        </div>
+    </div>
+    <!-- now we making the section for the client -->
+{% include 'help.html'%}
+{% include 'footer.html'%}
+{% endblock%}

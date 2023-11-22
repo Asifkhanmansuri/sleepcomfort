@@ -1,0 +1,64 @@
+{% extends "index.html"%}
+{% block content%}
+<style>
+  .border-1{
+    border: 2px solid;
+  }
+  .edit{
+    position: relative;
+    z-index: 100;
+    left: 38%;
+  }
+</style>
+
+
+{% include "header.html"%}
+
+<div class="d-flex justify-content-center">
+  <h1 class="d-flex justify-content-center">My Profile</h1>
+<div class="edit">
+  <a class="text-decoration-none text-dark" href="{% url 'edit' request.user.id %}">
+    <i class="bi bi-pen-fill px-4 fs-3"></i> <br> <span><b>Edit Profile</b></span>
+  </a>
+  
+</div>
+</div>
+<div class="d-flex justify-content-center border">
+   
+  <div class="">
+     <div class="fs-4 mb-2 mt-2 border-1"><span >Name </span><span class="fs-4 text-primary">{{user.username}} </span></div>
+     <div class="fs-4 mb-2 border-1"><span >Email </span><span class="fs-4 text-primary">{{user.email}}  </span></div>
+     <div class="fs-4 mb-2  border-1"><span >Contact </span><span class="fs-4 text-primary">{{User.phone_number}}  </span></div>
+     <div class="fs-4 mb-2  border-1"><span >Address </span><span class="fs-4 text-primary"> {{User.address}} </span></div>
+     <div class="fs-4 mb-2 border-1"><span >Pincode </span><span class=" fs-4 text-primary">  {{User.pincode}}  </span></div>
+    
+   
+  
+    
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <video width="320" height="240" controls>
+    <source src="../static/img/Ya Lili Yelila.mp4" type="video/mp4">
+    <source src="movie.ogg" type="video/ogg">
+  Your browser does not support the video tag.
+  </video> -->
+{% endblock%}

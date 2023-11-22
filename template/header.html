@@ -1,0 +1,100 @@
+{% extends 'index.html'%}
+{% block content %}
+<style>
+   .px {
+        margin-left: 300px;
+      }
+    
+      .sleepColor {
+        color: #B7804A;
+      }
+    
+      .bg-1 {
+        background-color: #f8f1df;
+      }  
+      
+      header{
+        position: relative;
+      }
+      .logout{
+        margin-left: 400px;
+      }
+
+      .dropdown{
+        position: relative;
+        display: inline-block;
+      }
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        padding: 12px 16px;
+        z-index: 1;
+      }
+      
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+</style>
+<header class="pt-3 sticky-top bg-light">
+    <div class="d-flex align-items-center mx-4 ">
+      <h1 class="sleepColor">Sleep Comfort </h1>
+      <form action="searchQuery" method="GET">
+        <input class="px" type="text" placeholder="Search for product" 
+        width="500px" name="query">
+      </form>
+
+      <!-- making the icon for add to cart which show the product selected -->
+      <div>
+        <a class="text-decoration-none text-dark" href="{% url 'cart' %}"><i class="bi bi-cart4 fs-2 logout"></i></a>
+      </div>
+      <!-- making the logout button -->
+    
+    <button class="btn  btn-warning mx-3">
+      <a class="text-decoration-none text-dark" href="{% url 'register' %}">REGISTER</a>
+    </button>
+    <!--making the drop down button for menu  -->
+    
+    <div class="d-flex mb-1 gap-3">
+      <div class="dropdown">
+       <i class="bi bi-list fs-2 "></i>
+        <div class="dropdown-content">
+          <a class="text-decoration-none text-dark " href="{% url 'logout'%}">LOGOUT</a>
+      
+        </div>
+      </div>
+        
+        <a class="text-decoration-none text-dark" href="{% url 'profile' request.user.id %}"><i class="bi bi-person-circle  fs-2"></i></a>
+   
+    </div>
+
+  <!-- ===================== -->
+    </div>
+  
+    <div class="bg-1 mb-2 mt-4">
+      <ul type="none" class="d-flex gap-4 fs-5 justify-content-center">
+        <li><a  class="text-decoration-none text-dark" href="{% url 'home'%}">Home</a></li>
+        <li><a class="text-decoration-none text-dark" href="{% url 'mattress'%}" >Mattress</a></li>
+        <li><a class="text-decoration-none text-dark" href="{% url 'blanket'%}">Blanket</a></li>
+        <li><a class="text-decoration-none text-dark" href="{% url 'pillow'%}">Pillow</a></li>
+        <li><a class="text-decoration-none text-dark" href="{% url 'bed'%}">Bed</a></li>
+        <li><a class="text-decoration-none text-dark" href="{% url 'bedding'%}">Bedding</a></li>
+        <li><a class="text-decoration-none text-dark" href="{% url 'babyRange'%}">Baby Range</a></li>
+        <li><a class="text-decoration-none text-dark" href="{% url 'dogBed' %}">Dog Beds</a></li>
+        <li><a class="text-decoration-none text-dark" href="{% url 'contact'%}">Contact</a></li>
+        <li>About Us</li>
+        {%for button in header_button%}
+        <li>{{button.product_name}}</li>
+        {%endfor%}
+      </ul>
+    </div>
+  </header>
+  {% endblock%}
+
+
+  <i class="bi bi-list "></i>Menu
+
+
+  <li><a class="text-decoration-none text-dark " href="{% url 'logout'%}">LOGOUT</a></li>

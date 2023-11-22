@@ -1,0 +1,65 @@
+{% extends 'index.html' %}
+{% block content %} 
+{% load static%}
+<style>
+  .testimonials {
+    background-color: #f7dfb5;
+   
+  }
+  .sleepColor {
+    color: #B7804A;
+  }
+  .cards {
+    width: 550px;
+    display: flex;
+    justify-content: center;
+
+  }
+
+ 
+  .card-img{
+    object-fit: cover;
+    object-position:center;
+  }
+  .client_rating {
+    background-color: #f7dfb5;
+  }
+  
+
+ 
+</style>
+
+<!-- now we will including header from header.html file -->
+{% include 'header.html'%}
+
+  <!-- Now we are making the product card   -->
+  <section>
+    <h2 class="d-flex justify-content-center pt-4">Our Comfortable Mattress Product</h2>
+     <!--now we are making the a div for mattress sizing   -->
+    
+     <!-- now we inserting the card from database -->
+    
+    <!-- including the product card -->
+    {% include 'product_card.html'%}
+  </section>
+
+  <!-- now we are making the testimonials section -->
+
+{% include 'testimonial.html'%}
+
+<!-- including the facility section -->
+{% include 'facility.html'%}
+ 
+<!-- including the client rating section -->
+{% include 'clientRating.html'%}
+
+<!-- including help section -->
+{% include 'help.html'%}
+
+<!-- now we including the footer section -->
+{% include 'footer.html'%}
+
+
+  
+
+{% endblock%}

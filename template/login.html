@@ -1,0 +1,54 @@
+{% extends 'index.html'%}
+{%block content%}
+{% load static %}
+<style>
+    body{
+        background-image:  url("{% static '/img/login1.jpg' %}");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100vh;
+        margin: 0px;
+        padding: 0px;
+    }
+   .bg-color{
+    background-color: rgb(255 255 255 / 20%);
+    /* opacity: 0.8; */
+    backdrop-filter: blur(3px);
+    
+   }
+   .padding-input{
+    padding-left: 70px;
+    padding-right: 70px;
+   }
+
+</style>
+
+
+    <section  class=" d-flex justify-content-center align-items-center     h-100" >
+        <div class="card shadow  bg-trans bg-color padding-input " style="width: 400px;">
+          <h3 class="login d-flex justify-content-center mt-4" >LOGIN</h3>
+          <form action="#" method="POST">
+            {% csrf_token %}
+            <label for="" class="form-lable px-2 fs-5">username</label>
+            <input type="text" id="username" name="username" class="form-control mb-4 ">
+        
+            <label for="" class="form-lable fs-5">password</label>
+            <input type="password" id="password" name="password" class="form-control mb-4">
+            
+            <div class="d-flex justify-content-center mb-2">
+              <span class="fs-5">Forgote Password?</span>
+            </div>
+        
+            <div class="d-flex justify-content-center gap-2 mb-4 fs-5">
+              <input  type="submit" value="login" class="mb-2">
+              <input type="reset" class="mb-2">
+            </div>
+            
+          </form>
+        </div>
+          
+        </section>
+</div>
+
+{%endblock%}

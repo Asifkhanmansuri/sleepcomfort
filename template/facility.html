@@ -1,0 +1,30 @@
+{% extends 'index.html'%}
+{% block content%}
+<style>
+    .facility {
+        background-color: #b7804a;
+    
+      }
+    
+      .card-facility {
+        width: 350px;
+        background-color: #f6deb4;
+    
+      } 
+</style>
+<section class="facility">
+
+    <h2 class="text-light d-flex justify-content-center pt-4">Why should SleepComfort be your next mattress?</h2>
+  
+    <div class="d-flex justify-content-center mt-5 pb-5 gap-5 flex-wrap">
+      {% for Facility in facility %}
+      <div class="card-facility p-4 rounded ">
+        <img src="{{Facility.Image.url}}" alt="" width="40px" height="35px">
+        <h3 class="pt-2">{{Facility.Facility_Name}}</h3>
+        <span>{{Facility.Discription}}</span>
+      </div>
+      {% endfor %}
+  
+    </div>
+  </section>
+{% endblock %}

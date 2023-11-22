@@ -1,0 +1,57 @@
+{%extends "index.html"%}
+{% block content%}
+
+<!-- including the header -->
+{% include "header.html"%}
+
+<!-- product detail into the cart section -->
+<h1 class="d-flex justify-content-center">cart product show below</h1>
+
+
+<!-- ===================================== -->
+<div class="d-flex flex-wrap justify-content-center"  >
+    {% for cartItem in CartItems %}
+<div class="d-flex mx-4 border mt-4 " style="width: 680px;">
+    <div class="border ">
+        <img src="{{cartItem.product.Image.url}}" alt="" width="250px" height="250px">
+    </div>
+    <div class="mx-4 d-flex justify-content-between flex-column">
+        <div class="mx-4">
+            <h3 class="text-success fs-2">{{cartItem.product.Productname}}</h3>
+            <span class="sleepColor fs-4"><i class="bi bi-currency-rupee"></i>{{cartItem.product.Productprice}}</span><br>
+            
+            <div class="d-flex gap-4">
+                <h3>Size:-</h3>
+                {% for sizes in size %}
+                <a href="?size={{size.size}}">
+                    <button class="btn btn-light">
+                        {{sizes.size}}
+                        </button>
+                </a>
+                {% endfor %}
+               
+            </div>
+    
+            <!-- making section for weight -->
+           <div >
+            
+            <form action="">
+                <label for="quantity"><h3>Qty :</h3></label>
+                <input type="number" id="quantity" name="quantity" min="1" max="100" placeholder="Enter Qty">
+            </form>
+           </div>
+        </div>
+           <div>
+            <button class="btn btn-light border-dark mb-2"><b><a class="text-decoration-none text-dark" href="{% url 'delete' cartItem.id %}">Delete</a></b></button>
+            <button class="btn btn-warning border-dark mb-2"><b><a class="text-decoration-none text-dark" href="{% url 'buynow' cartItem.product.id  %}">Buy Now</a></b></button>
+        </div>
+        
+    </div>
+   
+</div>
+{% endfor %}
+</div>
+
+
+<!-- ======================================= -->
+{% endblock%}

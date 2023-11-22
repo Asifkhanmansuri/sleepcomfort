@@ -1,0 +1,44 @@
+{% extends 'index.html'%}
+{% block content%}
+<style>
+    .client_rating {
+        background-color: #f7dfb5;
+         overflow: auto;
+        height: 500px;
+       
+      }
+</style>
+<section class="client_rating">
+
+    <h2 class="d-flex justify-content-center pt-4">See why people love our products</h2>
+  
+    <!-- making the card for client rating -->
+    <div class="d-flex justify-content-center  pb-5 gap-5 flex-wrap p-4">
+  
+      {% for Client_Rating in clientRating %}
+  
+        <div style="width:250px;" class="card d-flex flex-column p-3 justify-content-between  ">
+         <div class="flex-column d-flex">
+          <span>{{Client_Rating.Date}}</span>
+          <span class="pt-2 sleepcolor "><b>{{Client_Rating.Client_Name}}</b></span>
+         <div class="d-flex gap-1 pt-2 pb-2">
+          <i class="bi bi-star-fill text-warning"></i>
+          <i class="bi bi-star-fill text-warning"></i>
+          <i class="bi bi-star-fill text-warning"></i>
+          <i class="bi bi-star-fill text-warning"></i>
+          <i class="bi bi-star-fill text-warning"></i>
+          <!-- <img src="{{Client_Rating.OnlineComapanyImage.url}}" alt=""> -->
+         </div>
+          <span class="text-secondary">{{Client_Rating.Discription}}</span>
+         </div>
+        
+        </div>
+  
+      {% endfor %}
+    </div>
+  
+  </section>
+{%endblock%}
+
+
+

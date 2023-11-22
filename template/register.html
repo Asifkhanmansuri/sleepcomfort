@@ -1,0 +1,36 @@
+{% extends 'index.html'%}
+{% block content %}
+
+{% include "header.html"%}
+<div class="d-flex justify-content-center">
+    <form class="mb-4 " action=""  method="post">
+        {% csrf_token %}
+     
+        <label class="pt-3" for=""> Name</label>
+        <input type="text" id="user" name="user"><br>
+     
+        
+     
+        <label class="pt-3" for="">Mobile Number</label>
+        <input type="text" name="phone_number" id="phone_number"><br>
+     
+        <label class="pt-3" for="">Email</label>&nbsp;&nbsp;&nbsp;
+        <input type="email" name="email" id="email"><br>
+     
+        <label class="pt-3" for="">Address</label>
+        <input type="text" name="address" id="address"><br>
+     
+        <label class="pt-3" for="">Pincode</label>
+        <input type="text" name="pincode" id="pincode"><br>
+     
+        
+     
+       <div class="d-flex justify-content-center mt-2">
+        <input type="Submit" name="" id="">
+       </div>
+     
+     </form>
+</div>
+{% include "help.html"%}
+{% include 'footer.html'%}
+{% endblock%}

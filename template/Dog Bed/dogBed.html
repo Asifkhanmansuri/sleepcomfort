@@ -1,0 +1,36 @@
+{% extends 'index.html'%}
+{% block content%}
+{% load static %}
+<style>
+
+</style>
+
+<!-- now we include header -->
+{% include 'header.html'%}
+
+
+  <!-- now we making the product section  -->
+  <section>
+    <!-- writing the product heading  -->
+    <h2 class="d-flex justify-content-center pt-4">Our  Product </h2>
+   <!-- including the product card -->
+   {% include 'product_card.html'%}
+
+
+  </section>
+<!-- now we are making the testimonials section -->
+
+{% include 'testimonial.html'%}
+
+<!-- including the facility section -->
+{% include 'facility.html'%}
+ 
+<!-- including the client rating section -->
+{% include 'clientRating.html'%}
+
+<!-- including help section -->
+{% include 'help.html'%}
+
+<!-- now we including the footer section -->
+{% include 'footer.html'%}
+{% endblock%}
