@@ -1,0 +1,269 @@
+{% extends "index.html"%}
+{% block content%}
+<style>
+    .padding{
+        padding-top: 20px;
+    }
+    .hidden{
+        display: none;
+    }
+
+    .visible{
+        display: block;
+    }
+   
+</style>
+<!-- including the header to this page -->
+{% include "header.html"%}
+
+<div class="d-flex flex-wrap justify-content-center mb-4"  >
+    
+<div class="d-flex mx-4 border mt-4 " style="width: 800px;">
+    <div class="border ">
+        <img src="{{Buy.Image.url}}" alt="" width="250px" height="250px">
+    </div>
+    <div class="mx-4 d-flex justify-content-between flex-column">
+        <div class="mx-4">
+            <h3 class="text-success fs-2">{{Buy.Productname}}</h3>
+            <span class="sleepColor fs-4"><i class="bi bi-currency-rupee"></i>{{Buy.Productprice}}</span><br>
+            
+            <div class="d-flex gap-4">
+                <h3>Size:-</h3>
+                {% for sizes in size %}
+                <a href="?size={{size.size}}">
+                    <button class="btn btn-light">
+                        {{sizes.size}}
+                        </button>
+                </a>
+                {% endfor %}
+               
+            </div>
+    
+            <!-- making section for weight -->
+           <div >
+            
+            <form action="">
+                <label for="quantity"><h3>Qty :</h3></label>
+                <input type="number" id="quantity" name="quantity" min="1" max="100" placeholder="Enter Qty">
+            </form>
+           
+           </div>
+           <!--  making the section for address where product to be deliver -->
+           <div>
+            <span>{{user.username}}</span> <br>
+            <span><b>Shipping To : </b> </span>
+           </div>
+        </div>
+           
+    </div>
+    <div>
+        <span class="fs-4"><b>Select Pyment Method</b></span> <br>
+        <div class="mt-2">
+            <span class=""><b>Total Amt: </b>
+                <span class="border p-1 rounded "><b><i class="bi bi-currency-rupee"></i>{{Buy.Productprice}}</b></span>
+            </span>
+            <form action="" method="post">
+                {% csrf_token %}
+                <input class="" type="radio" data-payment-option="upi" name="payment_method" value="UPI">
+                <label for="upi"><a class="text-decoration-none text-dark" href="#upi">UPI</a></label><br>
+                <input type="radio" data-payment-option="wallet"  name="payment_method" value="wallet">
+                <label for="wallet">Wallete/ Postpaid </label><br>
+                <input type="radio" data-payment-option="credit" name="payment_method" value="atm">
+                <label for="atm">Credit/ Debit/ ATM card</label><br>
+                
+                <input type="radio" data-payment-option="cod" name="payment_method" value="cod">
+                <label for="cod">Cash On Delivery</label><br>
+                <button class="bg-warning btn">
+                    CONTINUE
+                </button>
+              </form>
+
+        </div>
+     </div>
+     
+</div>
+
+</div>
+
+
+
+<!-- now making the upi method section -->
+<div id="upi" class=" upi mb-4 hidden" >
+    <h4 class="d-flex justify-content-center">UPI </h4>
+    <div class="d-flex justify-content-center  gap-4">
+        <form class=" justify-content-center  " action="" method="post">
+            {% csrf_token %}
+             <div class="padding">
+                <input type="radio" name="upi" id="paytm" value="paytm"> 
+                <label for="paytm">Paytm</label>
+             </div>
+    
+            <div  style="padding-top: 35px;">
+                <input type="radio" name="upi" id="phonepe" value="phonepe">
+            <label for="phonepe">PhonePe</label> 
+            </div>
+    
+            <div style="padding-top: 35px;">
+                <input type="radio" name="upi" id="googlepay" value="googlepay">
+            <label for="googlePay">Google Pay</label>
+            </div>
+    
+            <div style="padding-top: 35px;">
+                <input type="radio" name="upi" id="upi_id" value="upi_id">
+            <label for="upi_id"> UPI id</label>
+            </div>
+    
+            <button class="btn btn-warning d-flex justify-content-center mt-4 " style=" width: 200px; margin-left:100px;">
+                <span>Pay <i class="bi bi-currency-rupee"></i>{{Buy.Productprice}}</span>
+            </button>
+        </form>
+        <div class="d-flex  flex-column">
+            <img src="../static/img/Paytm_Logo.jpeg" alt="" height="60px" width="100px">
+            <img src="../static/img/phonepe.jpeg" alt="" height="60px" width="100px">
+            <img src="../static/img/google pay.jpeg" alt="" height="60px" width="100px">
+        </div>
+    </div>
+</div>
+
+<!-- now we making the section for wallete and postpaid -->
+<div id="wallet" class=" upi mb-4 hidden" >
+    <h4 class="d-flex justify-content-center">wallet </h4>
+    <div class="d-flex justify-content-center  gap-4">
+        <form class=" justify-content-center  " action="" method="post">
+            {% csrf_token %}
+             <div class="padding">
+                <input type="radio" name="upi" id="paytm" value="paytm" > 
+                <label for="paytm">Paytm Wallete</label>
+             </div>
+    
+            <div  style="padding-top: 35px;">
+                <input type="radio" name="upi" id="phonepe" value="phonepe">
+            <label for="phonepe">PhonePe Wallete</label> 
+            </div>
+    
+            
+    
+            <button class="btn btn-warning d-flex justify-content-center mt-4 mx-2" style=" width: 200px;">
+                <span>Pay <i class="bi bi-currency-rupee"></i>{{Buy.Productprice}}</span>
+            </button>
+        </form>
+        <div class="d-flex  flex-column">
+            <img src="../static/img/Paytm_Logo.jpeg" alt="" height="60px" width="100px">
+            <img src="../static/img/phonepe.jpeg" alt="" height="60px" width="100px">
+           
+        </div>
+    </div>
+</div>
+
+<!-- credit card section -->
+<style>
+    .credit{
+        border: 1px solid white;
+        border-bottom: 2px solid;
+    }
+    
+</style>
+<div id="credit" class=" upi mb-4 hidden" >
+    <h4 class="d-flex justify-content-center">credit card</h4>
+    <div class="d-flex justify-content-center">
+        <div>
+            <form action="" method="post">
+                {% csrf_token%}
+                <input class="credit" type="text" name="" id="card" placeholder="Card Number"><br>
+                <span>Valid thru</span><br>
+                <select name="month" id="" >
+                    <option value="MM">MM</option>
+                    <option value="Jan">Jan</option>
+                    <option value="Feb">Feb</option>
+                    <option value="Mar">Mar</option>
+                    <option value="Apr">Apr</option>
+                    <option value="May">May</option>
+                    <option value="Jun">Jun</option>
+                    <option value="Jul">Jul</option>
+                    <option value="Aug">Aug</option>
+                    <option value="Sep">Sep</option>
+                    <option value="Oct">Oct</option>
+                    <option value="Nov">Nov</option>
+                    <option value="Dec">Dec</option>
+                </select>
+                <select name="year" id="">
+                    <option value="year">YY</option>
+                    <option value="year">2023</option>
+                    <option value="year">2024</option>
+                    <option value="year">2025</option>
+                    <option value="year">2026</option>
+                    <option value="year">2027</option>
+                    <option value="year">2028</option>
+                    <option value="year">2029</option>
+                    <option value="year">2030</option>
+                    <option value="year">2031</option>
+                    <option value="year">2032</option>
+                    <option value="year">2033</option>
+                    <option value="year">2034</option>
+                    <option value="year">2035</option>
+                    <option value="year">2036</option>
+                    <option value="year">2037</option>
+                    <option value="year">2038</option>
+                    <option value="year">2039</option>
+                    <option value="year">2040</option>
+                    <option value="year">2041</option>
+                    <option value="year">2042</option>
+                    <option value="year">2043</option>
+                    <option value="year">2044</option>
+                    <option value="year">2045</option>
+                    <option value="year">2046</option>
+                </select>
+                
+                <input type="number" name="" id="" maxlength="4" placeholder="CVV">
+            </form>
+            <button class="btn btn-warning d-flex justify-content-center mt-4 mx-2" style=" width: 200px;">
+                <span>Pay <i class="bi bi-currency-rupee"></i>{{Buy.Productprice}}</span>
+            </button>
+        </div>
+    </div>
+    
+</div>
+
+<!-- cash on  delivery -->
+<div id="cod" class=" upi mb-4 hidden" >
+    <h4 class="d-flex justify-content-center">cash on delevery </h4>
+    <div class="d-flex justify-content-center  gap-4">
+        <form class=" justify-content-center  " action="" method="post">
+            {% csrf_token %}
+             
+            <button class="btn btn-warning d-flex justify-content-center mt-4 mx-2" style=" width: 200px;">
+                <span>CONTINUE</span>
+            </button>
+        </form>
+         
+    </div>
+</div>
+<!-- footer section -->
+{% include "footer.html"%}
+<script>
+    
+    console.log("buy now js script loaded...");
+    let currentActive = null;
+    const methods = Array(...document.querySelectorAll("input[name='payment_method']"))
+    methods.forEach((method)=>{
+        console.log("adding event",method)
+
+        method.addEventListener("change", ()=>{
+            console.log("paymet method changed.");
+            if(method.checked){
+                console.log(method.dataset.paymentOption)
+                if(currentActive) {
+                    currentActive.classList.remove("visible")
+                    currentActive.classList.add("hidden")
+                }
+                currentActive = document.getElementById(method.dataset.paymentOption)
+                currentActive.classList.add("visible")    
+                currentActive.classList.remove("hidden")    
+            }
+            
+        });
+    })
+
+ 
+</script>
+{% endblock %}
